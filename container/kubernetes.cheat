@@ -59,7 +59,7 @@ kubectl label nodes <node-name> node-role.kubernetes.io/<label-name>=<label-valu
 kubectl label nodes <node-name> node-role.kubernetes.io/<label-name>-
 
 # 获取Istio VirtualService
-kubectl get virtualservice -n <namespace> 
+kubectl get vs -n <namespace> <virtualservice>
 
 # 获取kubeconfig
 kubectl config view --raw
@@ -84,3 +84,6 @@ kubectl proxy --port=<port>
 
 # 资源端口转发 port-forward
 kubectl port-forward -h
+
+# set deployment images
+kubectl set image deployment -n <namespace> <deployment> <pod-name>=<image-url>
