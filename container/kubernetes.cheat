@@ -32,6 +32,7 @@ kubectl describe <resource>/<name> -n <namespace>
 
 # Print logs from namespace
 kubectl logs -f pods/<name> -n <namespace>
+kubectl logs -n <namespace> deployment/<deployment> -c <pod-name>
 
 # Get deployments
 kubectl get deployments -n <namespace>
@@ -50,3 +51,36 @@ kubectl cordon <name>
 
 # Display resource (cpu/memory/storage) usage
 kubectl top <type>
+
+# 给node打上label
+kubectl label nodes <node-name> node-role.kubernetes.io/<label-name>=<label-value>
+
+# 移除node的label
+kubectl label nodes <node-name> node-role.kubernetes.io/<label-name>-
+
+# 获取Istio VirtualService
+kubectl get virtualservice -n <namespace> 
+
+# 获取kubeconfig
+kubectl config view --raw
+
+# 重启deployment
+kubectl rollout restart -n <namespace> <deployment>
+
+# 显示rollout的history
+kubectl rollout history -n <namespace> <deployment>
+
+# 撤销上一次的rollout
+kubectl rollout undo -n <namespace> <deployment>
+
+# 撤销指定的undo
+kubectl rollout undo -n <namespace> <deployment> --to-revision=<revision>
+
+# 查看api-versions
+kubectl api-versions
+
+# 运行一个 proxy 到 Kubernetes API server
+kubectl proxy --port=<port>
+
+# 资源端口转发 port-forward
+kubectl port-forward -h
